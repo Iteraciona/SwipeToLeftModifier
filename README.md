@@ -24,16 +24,17 @@ By using this modifier, you can easily add swipe gestures without interfering wi
 import SwiftUI
 
 struct ContentView: View {
+    @Environment(\.presentationMode) var presentationMode
+    
     var body: some View {
-        NavigationView {
-            VStack {
-                Text("Swipe left to go back")
-            }
-            .navigationBarBackButtonHidden(true) // Hide the back button
-            .swipeToLeftGesture {
-                // Action to perform when swipe gesture is detected
-                print("Swiped left!")
-            }
+        VStack {
+            Text("Swipe left to go back")
+        }
+        .navigationBarBackButtonHidden(true) // Hide the back button
+        .swipeToLeftGesture {
+            // Action to perform when swipe gesture is detected
+            print("Swiped left!")
+            presentationMode.wrappedValue.dismiss()
         }
     }
 }
