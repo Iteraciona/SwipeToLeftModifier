@@ -4,14 +4,14 @@
 import Foundation
 import SwiftUI
 
-struct SwipeToLeftGesture: UIViewControllerRepresentable {
-    var onSwipe: () -> Void
+public struct SwipeToLeftGesture: UIViewControllerRepresentable {
+    public var onSwipe: () -> Void
     
-    func makeCoordinator() -> Coordinator {
+    public func makeCoordinator() -> Coordinator {
         Coordinator(self)
     }
     
-    func makeUIViewController(context: Context) -> some UIViewController {
+    public func makeUIViewController(context: Context) -> some UIViewController {
         let viewController = UIViewController()
         let gestureRecognizer = UIPanGestureRecognizer(target: context.coordinator, action: #selector(Coordinator.handlePan))
         viewController.view.addGestureRecognizer(gestureRecognizer)
@@ -19,11 +19,11 @@ struct SwipeToLeftGesture: UIViewControllerRepresentable {
         return viewController
     }
     
-    func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {
+    public func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {
         //
     }
     
-    class Coordinator: NSObject {
+    public class Coordinator: NSObject {
         var swipeBackGesture: SwipeToLeftGesture
         
         init(_ swipeBackGesture: SwipeToLeftGesture) {
@@ -44,10 +44,10 @@ struct SwipeToLeftGesture: UIViewControllerRepresentable {
     }
 }
 
-struct SwipeToLeftModifier: ViewModifier {
-    var onSwipe: () -> Void
+public struct SwipeToLeftModifier: ViewModifier {
+    public var onSwipe: () -> Void
     
-    func body(content: Content) -> some View {
+    public func body(content: Content) -> some View {
         content
             .background(
                 SwipeToLeftGesture {
@@ -58,7 +58,7 @@ struct SwipeToLeftModifier: ViewModifier {
     }
 }
 
-extension View {
+public extension View {
     func swipeToLeftGesture(onSwipe: @escaping () -> Void) -> some View {
         self.modifier(SwipeToLeftModifier(onSwipe: onSwipe))
     }
