@@ -1,0 +1,31 @@
+# Swift Package Manager
+.swiftpm/
+.build/
+Package.resolved
+
+# Xcode
+*.xccheckout
+*.xcworkspace
+*.xcodeproj
+xcuserdata/
+*.moved-aside
+DerivedData/
+.idea/
+*.hmap
+
+# CocoaPods
+Pods/
+
+# Carthage
+Carthage/Build/
+
+# SwiftLint
+.swiftlint.yml
+
+# Xcode Coverage
+*.xccovreport
+*.xccovarchive
+
+# System files
+.DS_Store
+
